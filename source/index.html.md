@@ -26,5 +26,5 @@ search: true
 
 Welcome to the Burstcoin API! You can use the API to access Burstcoin API endpoints, which can get information on various accounts, assets, and smart contracts in the blockchain.
 
-We have language bindings in curl and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in curl, python and ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
