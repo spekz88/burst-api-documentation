@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Burstcoin API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -16,11 +14,11 @@
   background-color: #272822;
 }
 .highlight .err {
-  color: #151515;
-  background-color: #ac4142;
+  color: #272822;
+  background-color: #f92672;
 }
 .highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #505050;
+  color: #75715e;
 }
 .highlight .cp {
   color: #f4bf75;
@@ -29,45 +27,45 @@
   color: #f4bf75;
 }
 .highlight .o, .highlight .ow {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .p, .highlight .pi {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .gi {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .gd {
-  color: #ac4142;
+  color: #f92672;
 }
 .highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
+  color: #66d9ef;
+  background-color: #272822;
   font-weight: bold;
 }
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
+  color: #ae81ff;
 }
 .highlight .kc {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kt {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kd {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .sr {
-  color: #75b5aa;
+  color: #a1efe4;
 }
 .highlight .si {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .se {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .nn {
   color: #f4bf75;
@@ -79,31 +77,33 @@
   color: #f4bf75;
 }
 .highlight .na {
-  color: #6a9fb5;
+  color: #66d9ef;
 }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .ss {
-  color: #90a959;
+  color: #a6e22e;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;ruby&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" />
+        <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <img src="images/logo.png" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="shell">curl</a>
               <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="ruby">ruby</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -112,7 +112,6 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -121,226 +120,2545 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Burstcoin API! You can use the API to access Burstcoin API endpoints, which can get information on various accounts, assets, and smart contracts in the blockchain.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have language bindings in curl and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+          <h1 id="account-operations">Account Operations</h1>
 
-<h1 id="authentication">Authentication</h1>
+<h2 id="get-account">Get Account</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getAccount"</span> <span class="se">\</span>
+  -d <span class="s2">"account=BURST-6E5U-CJQY-NUR3-ASNBA"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getAccount"</span><span class="p">,</span>
+  <span class="s">"account"</span><span class="p">:</span> <span class="s">"BURST-5L3W-BVF5-EE7N-3QX2C"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre>
 <blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above request returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nt">"unconfirmedBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"guaranteedBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"effectiveBalanceNXT"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"accountRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-6E5U-CJQY-NUR3-ASNBA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Genxt Web Development"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"forgedBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"balanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eed0e9faa1e9ff9e91c341c23f1033ea32c48e85440113ecc6e26e178dc10207"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9522465949435965562"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>Get account information given an account ID.</p>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="request-parameters">Request Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getAccount</code></td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">account</code> is the burst account ID</td>
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<h3 id="response-parameters">Response Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>unconfirmedBalanceNQT</td>
+<td>string</td>
+<td>is <code class="prettyprint">balanceNQT</code> less unconfirmed outgoing transactions, the balance displayed in the client</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>guaranteedBalanceNQT</td>
+<td>string</td>
+<td>is the balance (in NQT) of the account with at least 1440 confirmations</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>effectiveBalanceNXT</td>
+<td>numeric</td>
+<td>is the balance (in BURST) of the account available for forging: the unleased <code class="prettyprint">guaranteedBalance</code> of this account plus the leased <code class="prettyprint">guaranteedBalance</code> of all lessors to this account</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>accountRS</td>
+<td>string</td>
+<td>is the Reed-Solomon address of the account</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>name</td>
+<td>string</td>
+<td>is the name associated with the account, if applicable</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td>forgedBalanceNQT</td>
+<td>string</td>
+<td>is the balance (in NQT) that the account has forged</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td>balanceNQT</td>
+<td>string</td>
+<td>is the minimally confirmed basic balance (in NQT) of the account</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>publicKey</td>
+<td>string</td>
+<td>is the public key of the account</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td>account</td>
+<td>string</td>
+<td>is the account number</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-at">List AT</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getAccountATs"</span> <span class="se">\</span>
+  -d <span class="s2">"account=BURST-5F5X-6F69-HTZP-4TEH6"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getAccountATs"</span><span class="p">,</span>
+  <span class="s">"account"</span><span class="p">:</span> <span class="s">"BURST-5F5X-6F69-HTZP-4TEH6"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getAccountATs"</span><span class="p">,</span>
+  <span class="s2">"account"</span><span class="p">:</span> <span class="s2">"BURST-5F5X-6F69-HTZP-4TEH6"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"ats"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"atVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467296547687216253"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creatorRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-5F5X-6F69-HTZP-4TEH6"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"machineCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35000300000000250100000035000402000000210..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I will be porting ChainCountDown to Burst..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"machineData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000364d0300b013000000000000800b9ffbs..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"dead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"balanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"nextBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">221414</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minActivation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"700000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"running"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18378841777071640386"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChainCountDown"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"atRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-FMU4-94AR-7WFJ-H5Q5Y"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"prevBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creationBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">216368</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"atVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467296547687216253"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creatorRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-5F5X-6F69-HTZP-4TEH6"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"machineCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35000300000000250100000035000402000000210..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I will be porting ChainCountDown to Burst..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"machineData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000364d0300b013000000000000800b9ffb2..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"dead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"balanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"nextBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">221414</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minActivation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"700000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"running"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18378841777071640386"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChainCountDown"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"atRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-FMU4-94AR-7WFJ-H5Q5Y"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"prevBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creationBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">216368</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get list of all AT smart contracts created by <code class="prettyprint">account</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getAccountATs</code></td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>account</td>
+<td>string</td>
+<td>Required</td>
+<td>account is an account ID (either RS address or number)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ats</td>
+<td>array</td>
+<td>is a list of AT contracts <a href="#get-at-details">see AT Details</a></td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+          <h1 id="mining-operations">Mining Operations</h1>
+
+<h2 id="mining-details">Mining details</h2>
+
+          <h1 id="transaction-operations">Transaction Operations</h1>
+
+<h2 id="broadcast-transaction">Broadcast Transaction</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=broadcastTransaction"</span> <span class="se">\</span>
+  -d <span class="s2">"transactionBytes=001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"broadcastTransaction"</span><span class="p">,</span>
+  <span class="s">"transactionBytes"</span><span class="p">:</span> <span class="s">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"broadcastTransaction"</span><span class="p">,</span>
+  <span class="s2">"transactionBytes"</span><span class="p">:</span> <span class="s2">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"fullHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a304584f20cf3d2cbbdd9698ff9a166427005ab98fbe9ca4ad6253651ee81f1"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15200507403046301754"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Broadcast a transaction to the network. POST only.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">broadcastTransaction</code></td>
+</tr>
+<tr>
+<td>transactionBytes</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">transactionBytes</code> is the bytecode of a signed transaction (optional)</td>
+</tr>
+<tr>
+<td>transactionJSON</td>
+<td>object</td>
+<td>Optional</td>
+<td><code class="prettyprint">transactionJSON</code> is the transaction object (optional if transactionBytes provided)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction</td>
+<td>string</td>
+<td>is the transaction ID</td>
+</tr>
+<tr>
+<td>fullHash</td>
+<td>string</td>
+<td>is the full hash of the signed transaction</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="calculate-full-hash">Calculate Full Hash</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=calculateFullHash"</span> <span class="se">\</span>
+  -d <span class="s2">"unsignedTransactionBytes=001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f2..."</span> <span class="se">\</span>
+  -d <span class="s2">"signatureHash=b35eae7d2f01639810d37694138aa0a86fbbf8a9bf58c2be4f2a5b8f0f30b3f7"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"calculateFullHash"</span><span class="p">,</span>
+  <span class="s">"unsignedTransactionBytes"</span><span class="p">:</span> <span class="s">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f2..."</span><span class="p">,</span>
+  <span class="s">"signatureHash"</span><span class="p">:</span> <span class="s">"b35eae7d2f01639810d37694138aa0a86fbbf8a9bf58c2be4f2a5b8f0f30b3f7"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"calculateFullHash"</span><span class="p">,</span>
+  <span class="s2">"unsignedTransactionBytes"</span><span class="p">:</span> <span class="s2">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f2..."</span><span class="p">,</span>
+  <span class="s2">"signatureHash"</span><span class="p">:</span> <span class="s2">"b35eae7d2f01639810d37694138aa0a86fbbf8a9bf58c2be4f2a5b8f0f30b3f7"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"fullHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a304584f20cf3d2cbbdd9698ff9a166427005ab98fbe9ca4ad6253651ee81f1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Calculate the full hash of a transaction.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">calculateFullHash</code></td>
+</tr>
+<tr>
+<td>transactionBytes</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">unsignedTransactionBytes</code> are the unsigned bytes of a transaction (optional if unsignedTransactionJSON is provided)</td>
+</tr>
+<tr>
+<td>unsignedTransactionJSON</td>
+<td>object</td>
+<td>Optional</td>
+<td><code class="prettyprint">unsignedTransactionJSON</code> is the unsigned transaction JSON object</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fullHash</td>
+<td>string</td>
+<td>is the full hash of the signed transaction</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="escrow-sign">Escrow Sign</h2>
+
+<p>More information needed</p>
+
+<h2 id="get-transaction">Get Transaction</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getTransaction"</span> <span class="se">\</span>
+  -d <span class="s2">"transaction=15200507403046301754"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getTransaction"</span><span class="p">,</span>
+  <span class="s">"transaction"</span><span class="p">:</span> <span class="s">"15200507403046301754"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getTransaction"</span><span class="p">,</span>
+  <span class="s2">"transaction"</span><span class="p">:</span> <span class="s2">"15200507403046301754"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"senderPublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b473beec228f79ff93c"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f0378b7390ff5a815eadd1354de533eef682f139362b153576e2207320a6..."</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"feeNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transactionIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2842</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">849</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"fullHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a304584f20cf3d2cbbdd9698ff9a166427005ab98fbe9ca4ad6253651ee81f1"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"ecBlockId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17321329645912574173"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"signatureHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b35eae7d2f01639810d37694138aa0a86fbbf8a9bf58c2be4f2a5b8f0f30b3f7"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"senderRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-L6FM-89WK-VK8P-FCRBB"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"amountNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15323192282528158131"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"recipientRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-4VNQ-RWZC-4WWQ-GVM8S"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17013046603665206934"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"ecBlockHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">275727</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"block"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8455642159445842600"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"blockTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">29797208</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15200507403046301754"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">29796934</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">275730</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a transaction object given a transaction ID.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getTransaction</code></td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">transaction</code> is the transaction ID (optional)</td>
+</tr>
+<tr>
+<td>fullHash</td>
+<td>string</td>
+<td>Optional</td>
+<td><code class="prettyprint">fullHash</code> is the full hash of the transaction (optional if transaction ID is provided)</td>
+</tr>
+<tr>
+<td>includePhasingResult</td>
+<td>string</td>
+<td>Optional</td>
+<td><code class="prettyprint">includePhasingResult</code> is true to retrieve execution status of each phased transaction (optional)</td>
+</tr>
+<tr>
+<td>requireBlock</td>
+<td>string</td>
+<td>Optional</td>
+<td><code class="prettyprint">requireBlock</code> is the block ID of a block that must be present in the blockchain during execution (optional)</td>
+</tr>
+<tr>
+<td>requireLastBlock</td>
+<td>string</td>
+<td>Optional</td>
+<td><code class="prettyprint">requireLastBlock</code> is the block ID of a block that must be last in the blockchain during execution (optional)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ender</td>
+<td>string</td>
+<td>is the account ID of the sender</td>
+</tr>
+<tr>
+<td>senderRS</td>
+<td>string</td>
+<td>is the Reed-Solomon address of the sender</td>
+</tr>
+<tr>
+<td>feeNQT</td>
+<td>string</td>
+<td>is the fee (in NQT) of the transaction</td>
+</tr>
+<tr>
+<td>amountNQT</td>
+<td>string</td>
+<td>is the amount (in NQT) of the transaction</td>
+</tr>
+<tr>
+<td>transactionIndex</td>
+<td>numeric</td>
+<td>is a zero-based index giving the order of the transaction in its block</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>numeric</td>
+<td>is the time (in seconds since the genesis block) of the transaction</td>
+</tr>
+<tr>
+<td>referencedTransactionFullHash</td>
+<td>string</td>
+<td>is the full hash of a transaction referenced by this one, omitted if no previous transaction is referenced</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>numeric</td>
+<td>is the number of transaction confirmations</td>
+</tr>
+<tr>
+<td>subtype</td>
+<td>numeric</td>
+<td>is the transaction subtype (refer to Get Constants for a current list of subtypes)</td>
+</tr>
+<tr>
+<td>block</td>
+<td>string</td>
+<td>is the ID of the block containing the transaction</td>
+</tr>
+<tr>
+<td>blockTimestamp</td>
+<td>numeric</td>
+<td>is the timestamp (in seconds since the genesis block) of the block</td>
+</tr>
+<tr>
+<td>height</td>
+<td>numeric</td>
+<td>is the height of the block in the blockchain</td>
+</tr>
+<tr>
+<td>senderPublicKey</td>
+<td>string</td>
+<td>is the public key of the sending account for the transaction</td>
+</tr>
+<tr>
+<td>type</td>
+<td>numeric</td>
+<td>is the transaction type (refer to Get Constants for a current list of types)</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>numeric</td>
+<td>is the deadline (in minutes) for the transaction to be confirmed</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>string</td>
+<td>is the digital signature of the transaction</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>string</td>
+<td>is the account number of the recipient, if applicable</td>
+</tr>
+<tr>
+<td>recipientRS</td>
+<td>string</td>
+<td>is the Reed-Solomon address of the recipient, if applicable</td>
+</tr>
+<tr>
+<td>fullHash</td>
+<td>string</td>
+<td>is the full hash of the signed transaction</td>
+</tr>
+<tr>
+<td>signatureHash</td>
+<td>string</td>
+<td>is a SHA-256 hash of the transaction signature</td>
+</tr>
+<tr>
+<td>approved</td>
+<td>boolean</td>
+<td>is a boolean indicating if the transaction is approved (only included when includePhasingResult is true and the transaction is phased)</td>
+</tr>
+<tr>
+<td>result</td>
+<td>string</td>
+<td>is a string containing the result of the transaction (only included when includePhasingResult is true and the transaction is phased)</td>
+</tr>
+<tr>
+<td>executionHeight</td>
+<td>numeric</td>
+<td>is the height the transaction was executed (only included when includePhasingResult is true and the transaction is phased)</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>string</td>
+<td>is the transaction ID</td>
+</tr>
+<tr>
+<td>version</td>
+<td>numeric</td>
+<td>is the transaction version number</td>
+</tr>
+<tr>
+<td>phased</td>
+<td>boolean</td>
+<td>is true if the transaction is phased, false otherwise</td>
+</tr>
+<tr>
+<td>ecBlockId</td>
+<td>numeric</td>
+<td>is the economic clustering block ID</td>
+</tr>
+<tr>
+<td>ecBlockHeight</td>
+<td>numeric</td>
+<td>is the economic clustering block height</td>
+</tr>
+<tr>
+<td>attachment</td>
+<td>object</td>
+<td>is an object containing any additional data needed for the transaction, if applicable</td>
+</tr>
+<tr>
+<td>lastBlock</td>
+<td>string</td>
+<td>is the last block ID on the blockchain (applies if requireBlock is provided but not requireLastBlock)</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  The block, blockTimestamp and confirmations fields are omitted for unconfirmed transactions. Double-spending transactions are not retrieved.
+</aside>
+
+<h2 id="get-transaction-bytes">Get Transaction Bytes</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getTransactionBytes"</span> <span class="se">\</span>
+  -d <span class="s2">"transaction=15200507403046301754"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getTransactionBytes"</span><span class="p">,</span>
+  <span class="s">"transaction"</span><span class="p">:</span> <span class="s">"15200507403046301754"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getTransactionBytes"</span><span class="p">,</span>
+  <span class="s2">"transaction"</span><span class="p">:</span> <span class="s2">"15200507403046301754"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"unsignedTransactionBytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b473..."</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">1019</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transactionBytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b473..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get the bytecode of a transaction.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getTransactionBytes</code></td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>string</td>
+<td>Required</td>
+<td>transaction is a transaction ID</td>
+</tr>
+<tr>
+<td>requireBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>requireBlock is the block ID of a block that must be present in the blockchain during execution (optional)</td>
+</tr>
+<tr>
+<td>requireLastBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>requireLastBlock is the block ID of a block that must be last in the blockchain during execution (optional)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>confirmations</td>
+<td>numeric</td>
+<td>is the number of transaction confirmations</td>
+</tr>
+<tr>
+<td>transactionBytes</td>
+<td>string</td>
+<td><code class="prettyprint">transactionBytes</code> are the bytes contained in the transaction</td>
+</tr>
+<tr>
+<td>unsignedTransactionBytes</td>
+<td>object</td>
+<td><code class="prettyprint">unsignedTransactionBytes</code> are the unsigned bytes contained in the transaction</td>
+</tr>
+<tr>
+<td>prunableAttachmentJSON</td>
+<td>string</td>
+<td>is the prunable attachment JSON object, if applicable, because transactionBytes never includes prunable data</td>
+</tr>
+<tr>
+<td>lastBlock</td>
+<td>string</td>
+<td>is the last block ID on the blockchain (applies if requireBlock is provided but not requireLastBlock)</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-unconfirmed-transaction-ids">Get Unconfirmed Transaction Ids</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getUnconfirmedTransactionIds"</span> <span class="se">\</span>
+  -d <span class="s2">"account=NXT-L6FM-89WK-VK8P-FCRBB"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getUnconfirmedTransactionIds"</span><span class="p">,</span>
+  <span class="s">"account"</span><span class="p">:</span> <span class="s">"NXT-L6FM-89WK-VK8P-FCRBB"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getUnconfirmedTransactionIds"</span><span class="p">,</span>
+  <span class="s2">"account"</span><span class="p">:</span> <span class="s2">"NXT-L6FM-89WK-VK8P-FCRBB"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"unconfirmedTransactionIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a list of unconfirmed transaction IDs associated with an account.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getUnconfirmedTransactionIds</code></td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>optional</td>
+<td>account is one account ID</td>
+</tr>
+<tr>
+<td>requireBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>requireBlock is the block ID of a block that must be present in the blockchain during execution</td>
+</tr>
+<tr>
+<td>requireLastBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>requireLastBlock is the block ID of a block that must be last in the blockchain during execution</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unconfirmedTransactionIds</td>
+<td>array</td>
+<td>is an array of unconfirmed transaction IDs</td>
+</tr>
+<tr>
+<td>lastBlock</td>
+<td>string</td>
+<td>is the last block ID on the blockchain (applies if requireBlock is provided but not requireLastBlock)</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-unconfirmed-transactions">Get Unconfirmed Transactions</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getUnconfirmedTransactions"</span> <span class="se">\</span>
+  -d <span class="s2">"account=NXT-L6FM-89WK-VK8P-FCRBB"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getUnconfirmedTransactions"</span><span class="p">,</span>
+  <span class="s">"account"</span><span class="p">:</span> <span class="s">"NXT-L6FM-89WK-VK8P-FCRBB"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getUnconfirmedTransactions"</span><span class="p">,</span>
+  <span class="s2">"account"</span><span class="p">:</span> <span class="s2">"NXT-L6FM-89WK-VK8P-FCRBB"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"unconfirmedTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a list of unconfirmed transactions associated with an account.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getUnconfirmedTransactions</code></td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>optional</td>
+<td>account is one account ID</td>
+</tr>
+<tr>
+<td>requireBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>requireBlock is the block ID of a block that must be present in the blockchain during execution</td>
+</tr>
+<tr>
+<td>requireLastBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>requireLastBlock is the block ID of a block that must be last in the blockchain during execution</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unconfirmedTransactionIds</td>
+<td>array</td>
+<td>is an array of unconfirmed transaction IDs</td>
+</tr>
+<tr>
+<td>lastBlock</td>
+<td>string</td>
+<td>is the last block ID on the blockchain (applies if requireBlock is provided but not requireLastBlock)</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="parse-transaction">Parse Transaction</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=parseTransaction"</span> <span class="se">\</span>
+  -d <span class="s2">"transactionBytes=001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"parseTransaction"</span><span class="p">,</span>
+  <span class="s">"transactionBytes"</span><span class="p">:</span> <span class="s">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"parseTransaction"</span><span class="p">,</span>
+  <span class="s2">"transactionBytes"</span><span class="p">:</span> <span class="s2">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"senderPublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b473beec228f79ff93c"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f0378b7390ff5a815eadd1354de533eef682f139362b153576e2207320a6..."</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"feeNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"fullHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a304584f20cf3d2cbbdd9698ff9a166427005ab98fbe9ca4ad6253651ee81f1"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"ecBlockId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17321329645912574173"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"signatureHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b35eae7d2f01639810d37694138aa0a86fbbf8a9bf58c2be4f2a5b8f0f30b3f7"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"senderRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-L6FM-89WK-VK8P-FCRBB"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"amountNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15323192282528158131"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"recipientRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-4VNQ-RWZC-4WWQ-GVM8S"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17013046603665206934"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"ecBlockHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">275727</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"verify"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15200507403046301754"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">29796934</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483647</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a transaction object given a (signed or unsigned) transaction bytecode, or re-parse a transaction object. Verify the signature.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">parseTransaction</code></td>
+</tr>
+<tr>
+<td>transactionBytes</td>
+<td>string</td>
+<td>optional</td>
+<td>is the transaction object (optional if transactionBytes is included)</td>
+</tr>
+<tr>
+<td>transactionJSON</td>
+<td>string</td>
+<td>optional</td>
+<td>requireBlock is the block ID of a block that must be present in the blockchain during execution</td>
+</tr>
+<tr>
+<td>requireBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>is the block ID of a block that must be present in the blockchain during execution (optional)</td>
+</tr>
+<tr>
+<td>requireLastBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>is the block ID of a block that must be last in the blockchain during execution (optional)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>verify</td>
+<td>boolean</td>
+<td>is true if the signature is verified, false otherwise</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Refer to [Get Transaction](#get-transaction) for additional fields.
+</aside>
+
+<h2 id="send-money-escrow">Send Money Escrow</h2>
+
+<aside class="notice">
+  more information needed
+</aside>
+
+<h2 id="send-money-subscription">Send Money Subscription</h2>
+
+<aside class="notice">
+  more information needed
+</aside>
+
+<h2 id="sign-transaction">Sign Transaction</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=signTransaction"</span> <span class="se">\</span>
+  -d <span class="s2">"unsignedTransactionBytes=001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span> <span class="se">\</span>
+  -d <span class="s2">"secretPhrase=SecretPhrase"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"signTransaction"</span><span class="p">,</span>
+  <span class="s">"unsignedTransactionBytes"</span><span class="p">:</span> <span class="s">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span><span class="p">,</span>
+  <span class="s">"secretPhrase"</span><span class="p">:</span> <span class="s">"SecretPhrase"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"signTransaction"</span><span class="p">,</span>
+  <span class="s2">"unsignedTransactionBytes"</span><span class="p">:</span> <span class="s2">"001046aac6013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143..."</span><span class="p">,</span>
+  <span class="s2">"secretPhrase"</span><span class="p">:</span> <span class="s2">"SecretPhrase"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"signatureHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3f4830bf28f105d5075f5e084c36e4582a156e713abfe0bc6ee51cbf8b20f2d2"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transactionJSON"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"senderPublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10f09c34f225d425306e5be55a4946908156072afbead4d574a512d7e086ef5c"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24513e93029688100c5a04183ffddc49812fd7a137a15fb3a2545aa9a2bcb5004a3..."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"feeNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fullHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c34af8f1509e3be79c4562e24125ff2a8f026871fdd1a0366ad315bf8fab76b9"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phased"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ecBlockId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15869644242181198665"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"signatureHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3f4830bf28f105d5075f5e084c36e4582a156e713abfe0bc6ee51cbf8b20f2d2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"attachment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nt">"version.OrdinaryPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"senderRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-4VDY-LNVT-LMAY-FMCKA"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"amountNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15295723609781267838"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"recipientRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-BMUV-8QQR-47VK-CR7F3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11580081983047651163"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ecBlockHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">382777</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16662085316881435331"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">54328076</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483647</span><span class="w">
+ </span><span class="p">},</span><span class="w">
+ </span><span class="nt">"verify"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transactionBytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00100cfb3c03a00510f09c34f225d425306e5be55a4946908156072afbead4..."</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"fullHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c34af8f1509e3be79c4562e24125ff2a8f026871fdd1a0366ad315bf8fab76b9"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16662085316881435331"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Calculates the full hash, signature hash, and transaction ID of an unsigned transaction.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">signTransaction</code></td>
+</tr>
+<tr>
+<td>unsignedTransactionJSON</td>
+<td>string</td>
+<td>optional</td>
+<td>is the transactionJSON field of the transaction, without a signature subfield</td>
+</tr>
+<tr>
+<td>unsignedTransactionBytes</td>
+<td>string</td>
+<td>Required</td>
+<td>is the unsignedTransactionBytes field of the transaction (optional, if unsignedTransactionJSON provided)</td>
+</tr>
+<tr>
+<td>requireBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>is the block ID of a block that must be present in the blockchain during execution (optional)</td>
+</tr>
+<tr>
+<td>requireLastBlock</td>
+<td>string</td>
+<td>optional</td>
+<td>is the block ID of a block that must be last in the blockchain during execution (optional)</td>
+</tr>
+<tr>
+<td>prunableAttachmentJSON</td>
+<td>string</td>
+<td>optional</td>
+<td>is a prunable attachment JSON object, if applicable, because unsignedTransactionBytes never includes prunable data (optional if the transaction has already been broadcast and the prunable message can still be retrieved from the database)</td>
+</tr>
+<tr>
+<td>secretPhrase</td>
+<td>string</td>
+<td>Required</td>
+<td>secretPhrase is the secret passphrase of the signing account</td>
+</tr>
+<tr>
+<td>validate</td>
+<td>string</td>
+<td>optional</td>
+<td>is false to skip validation of the transaction bytes being signed (useful on nodes where the full blockchain is not downloaded)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>signatureHash</td>
+<td>string</td>
+<td>is a SHA-256 hash of the transaction signature, used in escrow transactions</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>boolean</td>
+<td>is true the signature is verified, false if not</td>
+</tr>
+<tr>
+<td>transactionJSON</td>
+<td>object</td>
+<td>is the signed transaction JSON object</td>
+</tr>
+<tr>
+<td>transactionBytes</td>
+<td>string</td>
+<td>are the signed transaction bytes</td>
+</tr>
+<tr>
+<td>fullHash</td>
+<td>string</td>
+<td>is the full hash of the signed transaction</td>
+</tr>
+<tr>
+<td>prunableAttachmentJSON</td>
+<td>object</td>
+<td>is the prunable attachment JSON object, if applicable, because transactionBytes never includes prunable data</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>string</td>
+<td>is the transaction ID, derived from the fullHash</td>
+</tr>
+<tr>
+<td>lastBlock</td>
+<td>string</td>
+<td>is the last block ID on the blockchain (applies if requireBlock is provided but not requireLastBlock)</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="subscription-cancel">Subscription Cancel</h2>
+
+<aside class="notice">
+  need more information
+</aside>
+
+          <h1 id="token-operations">Token Operations</h1>
+
+<h2 id="decode-hallmark">Decode Hallmark</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=decodeHallmark"</span> <span class="se">\</span>
+  -d <span class="s2">"hallmark=827ed8cf83bbd36419002759d960a1bec952f2209db8ed3be958..."</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"decodeHallmark"</span><span class="p">,</span>
+  <span class="s">"hallmark"</span><span class="p">:</span> <span class="s">"827ed8cf83bbd36419002759d960a1bec952f2209db8ed3be958..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"decodeHallmark"</span><span class="p">,</span>
+  <span class="s2">"hallmark"</span><span class="p">:</span> <span class="s2">"827ed8cf83bbd36419002759d960a1bec952f2209db8ed3be958..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-10"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"accountRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-FEJ5-H4YB-QD3D-2L3W2"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"burst500.club"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31580691533050371"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Decode a node hallmark.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">decodeHallmark</code></td>
+</tr>
+<tr>
+<td>hallmark</td>
+<td>numeric</td>
+<td>Required</td>
+<td><code class="prettyprint">hallmark</code> is the hallmark value</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td>string</td>
+<td>is the date the hallmark was created, in YYYY-MM-DD format</td>
+</tr>
+<tr>
+<td>valid</td>
+<td>boolen</td>
+<td>is true if host is less than 100 characters, <code class="prettyprint">weight</code> &gt; 0 and the embedded signature is verified</td>
+</tr>
+<tr>
+<td>accountRS</td>
+<td>string</td>
+<td>is the Reed-Solomon address of the account</td>
+</tr>
+<tr>
+<td>host</td>
+<td>string</td>
+<td>is the IP address or domain name associated with the hallmark</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>numeric</td>
+<td>is the weight assigned to the hallmark</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>is the account number associated with the hallmark</td>
+</tr>
+</tbody></table>
+
+<h2 id="decode-token">Decode Token</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=decodeToken"</span> <span class="se">\</span>
+  -d <span class="s2">"website=test"</span> <span class="se">\</span>
+  -d <span class="s2">"token=u8q9ps0gdoo2bl158p4llpar583ld0cgejat9qnrgrgde4l5ut8bgn..."</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"decodeToken"</span><span class="p">,</span>
+  <span class="s">"website"</span><span class="p">:</span> <span class="s">"test"</span><span class="p">,</span>
+  <span class="s">"token"</span><span class="p">:</span> <span class="s">"u8q9ps0gdoo2bl158p4llpar583ld0cgejat9qnrgrgde4l5ut8bgn..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"decodeToken"</span><span class="p">,</span>
+  <span class="s2">"website"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
+  <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"u8q9ps0gdoo2bl158p4llpar583ld0cgejat9qnrgrgde4l5ut8bgn..."</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"accountRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-4VDY-LNVT-LMAY-FMCKA"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15295723609781267838"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">49762488</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Validate a token without requiring the transmission of a secret passphrase.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">decodeToken</code></td>
+</tr>
+<tr>
+<td>website</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">website</code> is the signed text, typically an authorized URL</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">token</code> is the token generated by <a href="#generate-token">Generate Token</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>valid</td>
+<td>boolen</td>
+<td>is true if token is valid, false otherwise</td>
+</tr>
+<tr>
+<td>accountRS</td>
+<td>string</td>
+<td>is the Reed-Solomon address of the account</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>is the account number that generated the token</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>numeric</td>
+<td>is the time (in seconds since the genesis block) that the token was created</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Since token contains the token generator&rsquo;s public key and digital signature, website can be validated as authorized by the owner of the public key, and the public key determines the account ID.
+</aside>
+
+<h2 id="generate-token">Generate Token</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s2">"requestType=generateToken"</span> <span class="se">\</span>
+  -d <span class="s2">"website=test.com"</span> <span class="se">\</span>
+  -d <span class="s2">"secretPhrase=mysecretphrase"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"generateToken"</span><span class="p">,</span>
+  <span class="s">"website"</span><span class="p">:</span> <span class="s">"test.com"</span><span class="p">,</span>
+  <span class="s">"secretPhrase"</span><span class="p">:</span> <span class="s">"mysecretphrase"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"generateToken"</span><span class="p">,</span>
+  <span class="s2">"website"</span><span class="p">:</span> <span class="s2">"test.com"</span><span class="p">,</span>
+  <span class="s2">"secretPhrase"</span><span class="p">:</span> <span class="s2">"mysecretphrase"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kfkt3jgoe5nakqkvd7gs9uljg4b35ugtki6lm3ooql9dl1..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Generate a token. POST only.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">decodeToken</code></td>
+</tr>
+<tr>
+<td>website</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">website</code> is a web site URL for which authorization should be granted, or general text to be digitally signed</td>
+</tr>
+<tr>
+<td>secretPhrase</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">secretPhrase</code> is the passphrase of the account generating the token</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    <code>website</code> is typically a URL (with the leading http:// unnecessary) that an account owner signs with his secretPhrase (private key) to bind the account to the URL, but website can be any text that the owner wishes to sign.
+</aside>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>is a 160 character string representing the 100-byte token which consists of a 32-byte public key, a 4-byte timestamp, and a 64-byte signature</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Since token contains the token generator&rsquo;s public key and signature, the website can be validated as authorized by the owner of the public key using Decode Token.
+</aside>
+
+<h2 id="mark-host">Mark Host</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -d <span class="s2">"requestType=markHost"</span> <span class="se">\</span>
+  -d <span class="s2">"secretPhrase=IWontTellYou"</span> <span class="se">\</span>
+  -d <span class="s2">"host=iwonttellyou.com"</span> <span class="se">\</span>
+  -d <span class="s2">"weight=1"</span> <span class="se">\</span>
+  -d <span class="s2">"date=2014-11-22"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"markHost"</span><span class="p">,</span>
+  <span class="s">"secretPhrase"</span><span class="p">:</span> <span class="s">"mysecretphrase"</span><span class="p">,</span>
+  <span class="s">"host"</span><span class="p">:</span> <span class="s">"iwonttellyou.com"</span><span class="p">,</span>
+  <span class="s">"weight"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">"date"</span><span class="p">:</span> <span class="s">"2014-11-22"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"markHost"</span><span class="p">,</span>
+  <span class="s2">"secretPhrase"</span><span class="p">:</span> <span class="s2">"mysecretphrase"</span><span class="p">,</span>
+  <span class="s2">"host"</span><span class="p">:</span> <span class="s2">"iwonttellyou.com"</span><span class="p">,</span>
+  <span class="s2">"weight"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"2014-11-22"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"hallmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b473beec228f79ff93c..."</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Generates a node hallmark. POST only.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">markHost</code></td>
+</tr>
+<tr>
+<td>secretPhrase</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">secretPhrase</code> is the secret passphrase for the account that will be hallmarked on the node</td>
+</tr>
+<tr>
+<td>host</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">host</code> is the IP address or domain name of the node</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>numeric</td>
+<td>Required</td>
+<td><code class="prettyprint">weight</code> is the weight to assign to the node</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">date</code> is the current date in YYYY-MM-DD format</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+<tr>
+<td>hallmark</td>
+<td>string</td>
+<td>is the hallmark hex string</td>
+</tr>
+</tbody></table>
+
+          <h1 id="at-operations">AT Operations</h1>
+
+<h2 id="create-at">Create AT</h2>
+
+<p>more information need</p>
+
+<h2 id="get-at">Get AT</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getAT"</span> <span class="se">\</span>
+  -d <span class="s2">"at=9192603983782913483"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getAT"</span><span class="p">,</span>
+  <span class="s">"at"</span><span class="p">:</span> <span class="mi">9192603983782913483</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getAT"</span><span class="p">,</span>
+  <span class="s2">"at"</span><span class="p">:</span> <span class="mi">9192603983782913483</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"atVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15780098437841714406"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creatorRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-2Z98-XJU6-A2UA-FDKZP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"machineCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1e000000004c010100000000d0ed902e000000350103000000000..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Approx. every week 1 winner will receive the total wo..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"machineData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000091d5030000d0ed902e000000020000002dcf030000a0d..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"balanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9864170030301"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nextBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">249660</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minActivation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"running"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9192603983782913483"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LuckyAT"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"atRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-KBGD-MTM5-F3RF-9JP6Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prevBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9864170030301"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creationBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">59761</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get AT smart contract details</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getAT</code></td>
+</tr>
+<tr>
+<td>at</td>
+<td>numeric</td>
+<td>Required</td>
+<td><code class="prettyprint">at</code> is the contract id</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>atVersion</td>
+<td>numeric</td>
+<td>is the AT contract version</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>string</td>
+<td>is creator of the AT contract</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-at-details">Get AT Details</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getATDetails"</span> <span class="se">\</span>
+  -d <span class="s2">"at=9192603983782913483"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getATDetails"</span><span class="p">,</span>
+  <span class="s">"at"</span><span class="p">:</span> <span class="mi">9192603983782913483</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getATDetails"</span><span class="p">,</span>
+  <span class="s2">"at"</span><span class="p">:</span> <span class="mi">9192603983782913483</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"atVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15780098437841714406"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creatorRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-2Z98-XJU6-A2UA-FDKZP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"machineCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1e000000004c010100000000d0ed902e000000350103000000000..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Approx. every week 1 winner will receive the total wo..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"machineData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000091d5030000d0ed902e000000020000002dcf030000a0d..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"balanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9864170030301"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nextBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">249660</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minActivation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"running"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9192603983782913483"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LuckyAT"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"atRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-KBGD-MTM5-F3RF-9JP6Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prevBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9864170030301"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creationBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">59761</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get AT smart contract details, same as <a href="#get-at">Get AT</a></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getATDetails</code></td>
+</tr>
+<tr>
+<td>at</td>
+<td>numeric</td>
+<td>Required</td>
+<td><code class="prettyprint">at</code> is the contract id</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>atVersion</td>
+<td>numeric</td>
+<td>is the AT contract version</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>string</td>
+<td>is creator of the AT contract</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-at-contracts">List AT Contracts</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getATIds"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getATIds"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getATIds"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"atIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"9192603983782913483"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"4569261685979410777"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"5080866903808682902"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"7438451232804004876"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"575775830774922757"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"7410359864690133399"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"10179754792140291018"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"5385967310100409105"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"7543289557548699616"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"12431445788240948576"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"4722687283147421361"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"4318400438025577783"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"6579249049307385965"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"14300713972699400308"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get list of all AT smart contract id&rsquo;s on the blockchain</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getATIds</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>atIds</td>
+<td>Array</td>
+<td>is a list of AT smart contract ID&rsquo;s</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-at-long">Get AT long</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getATLong"</span> <span class="se">\</span>
+  -d <span class="s2">"hexString=616263"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getATLong"</span><span class="p">,</span>
+  <span class="s">"hexString"</span><span class="p">:</span> <span class="s">"616263"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getATLong"</span><span class="p">,</span>
+  <span class="s2">"hexString"</span><span class="p">:</span> <span class="s2">"616263"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"hex2long"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6513249"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Converts Hexadecimal to Decimal, Hex is a base 16 number and decimal is a base 10 number</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getATLong</code></td>
+</tr>
+<tr>
+<td>hexString</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">hexString</code> is a hex value</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>hex2long</td>
+<td>string</td>
+<td>is decimal base 10 number</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-account-at-39-s">Get Account AT&rsquo;s</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=getAccountATs"</span> <span class="se">\</span>
+  -d <span class="s2">"account=BURST-2Z98-XJU6-A2UA-FDKZP"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"getAccountATs"</span><span class="p">,</span>
+  <span class="s">"account"</span><span class="p">:</span> <span class="s">"BURST-2Z98-XJU6-A2UA-FDKZP"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"getAccountATs"</span><span class="p">,</span>
+  <span class="s2">"account"</span><span class="p">:</span> <span class="s2">"BURST-2Z98-XJU6-A2UA-FDKZP"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"ats"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"atVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15780098437841714406"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creatorRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-2Z98-XJU6-A2UA-FDKZP"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"machineCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1e000000004c010100000000d0ed902e0000003501030000000002..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Approx. every week 1 winner will receive the total wor..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"machineData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000091d5030000d0ed902e000000020000002dcf030000a0db..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"dead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"balanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9864170030301"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"nextBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">249660</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minActivation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1500000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"running"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9192603983782913483"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LuckyAT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"atRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-KBGD-MTM5-F3RF-9JP6Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"prevBalanceNQT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9864170030301"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"creationBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">59761</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get list of all AT smart contracts created by <code class="prettyprint">account</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">getAccountATs</code></td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>Required</td>
+<td>account is an account ID (either RS address or number)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ats</td>
+<td>array</td>
+<td>is a list of AT contracts <a href="#get-at-details">see AT Details</a></td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+</tbody></table>
+
+          <h1 id="utilities-operations">Utilities Operations</h1>
+
+<h2 id="long-convert">Long Convert</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=longConvert"</span> <span class="se">\</span>
+  -d <span class="s2">"id=9522465949435965562"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"longConvert"</span><span class="p">,</span>
+  <span class="s">"id"</span><span class="p">:</span> <span class="mi">9522465949435965562</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"longConvert"</span><span class="p">,</span>
+  <span class="s2">"id"</span><span class="p">:</span> <span class="mi">9522465949435965562</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"stringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15323192282528158131"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"longId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-3123551791181393485"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Converts an ID to the signed long integer representation used internally.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">longConvert</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td>numeric</td>
+<td>Required</td>
+<td><code class="prettyprint">id</code> is a numerical ID, in decimal form but equivalent to an 8-byte unsigned integer as produced by SHA-256 hashing</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>stringId</td>
+<td>string</td>
+<td>is <code class="prettyprint">balanceNQT</code> less unconfirmed outgoing transactions, the balance displayed in the client</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+<tr>
+<td>longId</td>
+<td>string</td>
+<td>is the signed long integer (8-bytes) representation of the ID used internally, returned as a string</td>
+</tr>
+</tbody></table>
+
+<h2 id="rs-convert">RS Convert</h2>
+<pre class="highlight shell"><code>curl https://wallet.burst-team.us:8125/burst <span class="se">\</span>
+  -d <span class="s2">"requestType=rsConvert"</span> <span class="se">\</span>
+  -d <span class="s2">"account=BURST-6E5U-CJQY-NUR3-ASNBA"</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"requestType"</span><span class="p">:</span> <span class="s">"rsConvert"</span><span class="p">,</span>
+  <span class="s">"account"</span><span class="p">:</span> <span class="s">"BURST-6E5U-CJQY-NUR3-ASNBA"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'unirest'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://wallet.burst-team.us:8125/burst"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"requestType"</span><span class="p">:</span> <span class="s2">"rsConvert"</span><span class="p">,</span>
+  <span class="s2">"account"</span><span class="p">:</span> <span class="s2">"BURST-6E5U-CJQY-NUR3-ASNBA"</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="no">Unirest</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">parameters: </span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">r</span><span class="p">.</span><span class="nf">raw_body</span>
+
+</code></pre>
+<blockquote>
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"accountRS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURST-6E5U-CJQY-NUR3-ASNBA"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"requestProcessingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9522465949435965562"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get both the Reed-Solomon account address and the account number given an account ID.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestType</td>
+<td>string</td>
+<td>Required</td>
+<td><code class="prettyprint">requestType</code> is <code class="prettyprint">longConvert</code></td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>Required</td>
+<td>account is an account ID (either RS address or number)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountRS</td>
+<td>string</td>
+<td>is the Reed-Solomon address of the account</td>
+</tr>
+<tr>
+<td>requestProcessingTime</td>
+<td>numeric</td>
+<td>is the API request processing time (in millisec)</td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>is the account number</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="shell">curl</a>
                 <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="ruby">ruby</a>
           </div>
       </div>
     </div>
