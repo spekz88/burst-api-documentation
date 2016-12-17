@@ -1,0 +1,3 @@
+# Mining Operations
+
+## Mining details
